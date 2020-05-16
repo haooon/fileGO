@@ -9,7 +9,7 @@ import (
 
 
 const (
-    UPLOAD_DIR = "/filePATH"
+    UPLOAD_DIR = "/app/filePATH"
 )
 
 func POSTuploadHandler(w http.ResponseWriter, r *http.Request) {
