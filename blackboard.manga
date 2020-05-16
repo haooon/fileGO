@@ -12,7 +12,7 @@ docker run --name test-centos --privileged=true -t -i -p 2222:22 -v /docker/ngin
 
 
 
- docker run -it -d --privileged=true -v /docker/nginx/fileGO:/fileGO -p 6767:6767 --name file-go filego:v1
+ docker run -it -d --privileged=true -v /docker/nginx/fileGO:/app/filePATH -p 6767:6767 --name file-go filego:v1
 
 
 

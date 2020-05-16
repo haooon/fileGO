@@ -10,16 +10,16 @@ COPY go.sum .
 RUN go mod download
 
 COPY . .
-RUN CGO_ENABLED=0 GOARCH=amd64 GOOS=linux go build -a -o fileGO .
+RUN CGO_ENABLED=0 GOARCH=amd64 GOOS=linux go build -a -o goapp .
 
 FROM alpine:3.10 AS final
 
 WORKDIR /app
-COPY --from=builder /build/fileGO /app/
+COPY --from=builder /build/goapp /app/
 #COPY --from=builder /build/config /app/config
 COPY --from=builder /etc/passwd /etc/passwd
 #COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
 
-RUN chmod 777 /fileGO
+RUN chmod 777 /filePATH
 USER app-runner
-ENTRYPOINT ["/app/fileGO"]
+ENTRYPOINT ["/app/goapp"]
