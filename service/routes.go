@@ -43,4 +43,12 @@ var routes = Routes{
             fileServer.POSTuploadHandler(w, r)
         },
     },
+    Route{
+        "filepostoption", // Name
+        "OPTIONS",        // HTTP method
+        "/uploadp", // Route pattern
+        func(w http.ResponseWriter, r *http.Request) {
+            fileServer.OPTIONSPOSTuploadHandler(w, r)
+        },
+    },
 }
