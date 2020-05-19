@@ -2,7 +2,7 @@ package service
 
 import (
     //go get -v -u github.com/gorilla/mux
-    "fmt"
+    "MANGAGO/logService"
     "github.com/gorilla/mux"
 )
 
@@ -14,7 +14,7 @@ func NewRouter() *mux.Router {
     // Iterator over the routes we declared in routes.go and attach them to the router instance
     for _, route := range routes {
         // Attach each route, uses a Builder-like pattern to set each route up.
-        fmt.Println("loading ROUTE:", route.Method, route.Pattern, route.Name)
+        logService.OUT("loading ROUTE:", route.Method, route.Pattern, route.Name)
         router.Methods(route.Method).
             Path(route.Pattern).
             Name(route.Name).

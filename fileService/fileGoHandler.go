@@ -1,8 +1,9 @@
-package fileServer
+package fileService
 
 import (
     "net/http"
-    "fmt"
+    //"fmt"
+    "MANGAGO/logService"
     "io"
     "os"
 )
@@ -14,7 +15,7 @@ const (
 )
 
 func POSTuploadHandler(w http.ResponseWriter, r *http.Request) {
-    fmt.Println("Handling /uploadp")
+    logService.OUT("Handling /uploadp")
     w.Header().Set("Access-Control-Allow-Origin", "*")
     f, h, err := r.FormFile("file")
     if err != nil {
@@ -22,12 +23,12 @@ func POSTuploadHandler(w http.ResponseWriter, r *http.Request) {
         return
     }
     filename := h.Filename
-    fmt.Println("filename:", filename)
+    logService.OUT("filename:", filename)
 
     defer f.Close() //文件流句柄
 
     t, err := os.Create(UPLOAD_DIR + "/" + filename)
-    fmt.Println("filepath:", UPLOAD_DIR+"/"+filename)
+    logService.OUT("filepath:", UPLOAD_DIR+"/"+filename)
 
     if err != nil {
         http.Error(w, err.Error(), http.StatusInternalServerError)

@@ -1,13 +1,14 @@
 package main
 
 import (
-    "fmt"
     "MANGAGO/service"
+    "MANGAGO/logService"
+    _"MANGAGO/dbService"
 )
 
 var appName = "accountservice"
 
 func main() {
-    fmt.Printf("Starting %v\n", appName)
+    logService.OUT("Starting %v\n", appName)
     service.StartWebServer("6767")
 }

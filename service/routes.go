@@ -2,7 +2,7 @@ package service
 
 import (
     "net/http"
-    "MANGAGO/fileServer"
+    "MANGAGO/fileService"
 )
 
 // Define a single route, e.g. a human readable name, HTTP method and the pattern the function that will execute when the route is called.
@@ -32,7 +32,7 @@ var routes = Routes{
         "GET",        // HTTP method
         "/upload", // Route pattern
         func(w http.ResponseWriter, r *http.Request) {
-            fileServer.GETuploadHandler(w, r)
+            fileService.GETuploadHandler(w, r)
         },
     },
     Route{
@@ -40,7 +40,7 @@ var routes = Routes{
         "POST",        // HTTP method
         "/uploadp", // Route pattern
         func(w http.ResponseWriter, r *http.Request) {
-            fileServer.POSTuploadHandler(w, r)
+            fileService.POSTuploadHandler(w, r)
         },
     },
     Route{
@@ -48,7 +48,7 @@ var routes = Routes{
         "OPTIONS",        // HTTP method
         "/uploadp", // Route pattern
         func(w http.ResponseWriter, r *http.Request) {
-            fileServer.OPTIONSPOSTuploadHandler(w, r)
+            fileService.OPTIONSPOSTuploadHandler(w, r)
         },
     },
 }
